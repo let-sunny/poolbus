@@ -42,7 +42,7 @@ export function RouteSearchPanel({ onSelectRoute, selectedRouteId }: RouteSearch
             tabIndex={0}
             className={`route-item ${selectedRouteId === route.routeid ? "selected" : ""}`}
             onClick={() => onSelectRoute(route)}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onSelectRoute(route); }}
+            onKeyDown={(e) => { if (e.key === "Enter") onSelectRoute(route); if (e.key === " ") { e.preventDefault(); onSelectRoute(route); } }}
           >
             <span className="route-no">{route.routeno}</span>
             <span className="route-type">{route.routetp}</span>
