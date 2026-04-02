@@ -1,9 +1,13 @@
-import { useState, useRef, useCallback } from "react";
+import { useState } from "react";
 import mapboxgl from "mapbox-gl";
 import { BusMap } from "./components/BusMap";
 import { RouteSearchPanel } from "./components/RouteSearchPanel";
 import { BusMarkers } from "./components/BusMarkers";
+import { BusTrails } from "./components/BusTrails";
+import { RoutePath } from "./components/RoutePath";
+import { PlayerControls } from "./components/PlayerControls";
 import { useBusPositions } from "./hooks/useBusPositions";
+import { useRouteStops } from "./hooks/useRouteStops";
 import type { BusRoute } from "./types";
 
 export function App() {
@@ -15,17 +19,37 @@ export function App() {
     startnodenm: "동분당더퍼스트정문",
     endnodenm: "판교대장초·중학교",
   });
-  const { current, previous } = useBusPositions(selectedRoute?.routeid ?? null);
+
+  const routeId = selectedRoute?.routeid ?? null;
+  const { current, previous, isPlaying, play, pause, reset } = useBusPositions(routeId);
+  const stops = useRouteStops(routeId);
+
+  const handleReset = () => {
+    reset();
+    if (map) {
+      const source = map.getSource("bus-trails") as mapboxgl.GeoJSONSource | undefined;
+      if (source) source.setData({ type: "FeatureCollection", features: [] });
+    }
+  };
 
   return (
     <div className="app">
       <RouteSearchPanel
         onSelectRoute={setSelectedRoute}
-        selectedRouteId={selectedRoute?.routeid ?? null}
+        selectedRouteId={routeId}
       />
       <div className="map-container">
         <BusMap onMapReady={setMap} />
+        <RoutePath map={map} stops={stops} />
+        <BusTrails map={map} current={current} />
         <BusMarkers map={map} current={current} previous={previous} />
+        <PlayerControls
+          isPlaying={isPlaying}
+          busCount={current.length}
+          onPlay={play}
+          onPause={pause}
+          onReset={handleReset}
+        />
       </div>
     </div>
   );
