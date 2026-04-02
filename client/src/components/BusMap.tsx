@@ -16,8 +16,8 @@ export function BusMap({ mapRef }: BusMapProps) {
     const map = new mapboxgl.Map({
       container: containerRef.current,
       style: "mapbox://styles/mapbox/dark-v11",
-      center: [126.978, 37.5665],
-      zoom: 11,
+      center: [127.1115, 37.3947],
+      zoom: 13,
     });
 
     map.addControl(new mapboxgl.NavigationControl(), "top-right");

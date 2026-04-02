@@ -1,5 +1,5 @@
 const BASE_URL = "https://apis.data.go.kr/1613000";
-const CITY_CODE = 11; // Seoul
+const CITY_CODE = 31020; // Seongnam
 
 function getServiceKey(): string {
   const key = process.env.TAGO_SERVICE_KEY;
@@ -14,15 +14,11 @@ function normalizeItems(data: any): any[] {
 }
 
 async function tagoFetch(path: string, params: Record<string, string>) {
-  const url = new URL(`${BASE_URL}${path}`);
-  url.searchParams.set("serviceKey", getServiceKey());
-  url.searchParams.set("_type", "json");
-  url.searchParams.set("numOfRows", "200");
-  for (const [key, value] of Object.entries(params)) {
-    url.searchParams.set(key, value);
-  }
+  const query = new URLSearchParams({ _type: "json", numOfRows: "200", ...params });
+  // serviceKey is already URL-encoded from data.go.kr — append raw to avoid double encoding
+  const url = `${BASE_URL}${path}?serviceKey=${getServiceKey()}&${query}`;
 
-  const res = await fetch(url.toString());
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`TAGO API error: ${res.status}`);
   const json = await res.json();
   return normalizeItems(json);
