@@ -90,7 +90,16 @@ export function useRoutePlayback(stops: RouteStop[]) {
     }
   }, [stops]);
 
-  const play = useCallback(() => setIsPlaying(true), []);
+  const play = useCallback(() => {
+    if (currentIndex >= stops.length - 1) {
+      setCurrentIndex(0);
+      progressRef.current = 0;
+      if (stops.length > 0) {
+        setPosition([stops[0].gpslong, stops[0].gpslati]);
+      }
+    }
+    setIsPlaying(true);
+  }, [currentIndex, stops]);
   const pause = useCallback(() => setIsPlaying(false), []);
   const reset = useCallback(() => {
     setIsPlaying(false);
