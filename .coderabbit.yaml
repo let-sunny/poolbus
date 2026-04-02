@@ -1,0 +1,12 @@
+language: ko
+reviews:
+  profile: chill
+  path_instructions:
+    - path: "**/*.{ts,tsx}"
+      instructions: >
+        This is a React + TypeScript project using Bun runtime.
+        Do not enforce JSDoc/docstring coverage — this project uses
+        TypeScript types for self-documentation.
+  tools:
+    docstring_coverage:
+      enabled: false
