@@ -11,6 +11,7 @@ export function useRoutePlayback(
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
+  const speedRef = useRef(1);
   const animFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef(0);
   const lastUIUpdateRef = useRef(0);
@@ -50,7 +51,7 @@ export function useRoutePlayback(
       const delta = now - lastTimeRef.current;
       lastTimeRef.current = now;
 
-      cursorRef.current += (delta / 1000) * BASE_SPEED * speed;
+      cursorRef.current += (delta / 1000) * BASE_SPEED * speedRef.current;
 
       if (cursorRef.current >= stops.length - 1) {
         cursorRef.current = stops.length - 1;
@@ -82,7 +83,7 @@ export function useRoutePlayback(
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isPlaying, stops, speed, getPosition, markerRef]);
+  }, [isPlaying, stops, getPosition, markerRef]);
 
   // Reset on route change
   useEffect(() => {
@@ -123,10 +124,9 @@ export function useRoutePlayback(
 
   const cycleSpeed = useCallback(() => {
     setSpeed((s) => {
-      if (s === 1) return 2;
-      if (s === 2) return 4;
-      if (s === 4) return 8;
-      return 1;
+      const next = s === 1 ? 2 : s === 2 ? 4 : s === 4 ? 8 : 1;
+      speedRef.current = next;
+      return next;
     });
   }, []);
 
