@@ -1,56 +1,34 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import type { RouteStop } from "../types";
 
 interface PlaybackMarkerProps {
   map: mapboxgl.Map | null;
-  position: [number, number] | null;
-  currentStop: RouteStop | null;
+  markerRef: React.RefObject<mapboxgl.Marker | null>;
+  initialPosition: [number, number] | null;
 }
 
-function escapeHTML(str: string): string {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-export function PlaybackMarker({ map, position, currentStop }: PlaybackMarkerProps) {
-  const markerRef = useRef<mapboxgl.Marker | null>(null);
-
+export function PlaybackMarker({ map, markerRef, initialPosition }: PlaybackMarkerProps) {
   useEffect(() => {
-    if (!map || !position) return;
+    if (!map || !initialPosition) return;
 
     if (!markerRef.current) {
       const el = document.createElement("div");
       el.className = "bus-marker playback-marker";
 
-      const popup = new mapboxgl.Popup({ offset: 25, closeButton: false });
-
-      markerRef.current = new mapboxgl.Marker({ element: el })
-        .setLngLat(position)
-        .setPopup(popup)
+      const marker = new mapboxgl.Marker({ element: el })
+        .setLngLat(initialPosition)
         .addTo(map);
-    } else {
-      markerRef.current.setLngLat(position);
-    }
 
-    if (currentStop && markerRef.current.getPopup()) {
-      const name = escapeHTML(currentStop.nodenm || "");
-      const ord = currentStop.nodeord;
-      markerRef.current.getPopup()!.setHTML(
-        `<div class="bus-popup"><strong>${name}</strong><p>#${ord} 정류소</p></div>`
-      );
+      (markerRef as React.MutableRefObject<mapboxgl.Marker | null>).current = marker;
     }
-  }, [map, position, currentStop]);
+  }, [map, initialPosition, markerRef]);
 
   useEffect(() => {
     return () => {
       markerRef.current?.remove();
-      markerRef.current = null;
+      (markerRef as React.MutableRefObject<mapboxgl.Marker | null>).current = null;
     };
-  }, []);
+  }, [markerRef]);
 
   return null;
 }

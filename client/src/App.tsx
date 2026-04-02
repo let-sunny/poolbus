@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import { BusMap } from "./components/BusMap";
 import { RouteSearchPanel } from "./components/RouteSearchPanel";
@@ -12,6 +12,7 @@ import type { BusRoute } from "./types";
 
 export function App() {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
+  const markerRef = useRef<mapboxgl.Marker | null>(null);
   const [selectedRoute, setSelectedRoute] = useState<BusRoute | null>({
     routeid: "GGB204000079",
     routeno: "380",
@@ -34,7 +35,7 @@ export function App() {
     seek,
     cycleSpeed,
     totalStops,
-  } = useRoutePlayback(stops);
+  } = useRoutePlayback(stops, markerRef);
 
   return (
     <div className="app">
@@ -46,7 +47,7 @@ export function App() {
         <BusMap onMapReady={setMap} />
         <RoutePath map={map} stops={stops} />
         <PlaybackTrail map={map} stops={stops} currentIndex={currentIndex} />
-        <PlaybackMarker map={map} position={position} currentStop={currentStop} />
+        <PlaybackMarker map={map} markerRef={markerRef} initialPosition={position} />
         <PlayerControls
           isPlaying={isPlaying}
           speed={speed}

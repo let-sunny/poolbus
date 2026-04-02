@@ -2,20 +2,24 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import type { RouteStop } from "../types";
 
 const BASE_SPEED = 0.3; // stops per second at 1x
+const UI_UPDATE_INTERVAL = 100; // ms between React state updates
 
-export function useRoutePlayback(stops: RouteStop[]) {
-  const [cursor, setCursor] = useState(0); // continuous float: 0 ~ stops.length-1
+export function useRoutePlayback(
+  stops: RouteStop[],
+  markerRef: React.RefObject<mapboxgl.Marker | null>
+) {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
   const animFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef(0);
+  const lastUIUpdateRef = useRef(0);
   const cursorRef = useRef(0);
 
   const totalStops = stops.length;
   const maxCursor = Math.max(totalStops - 1, 0);
-  const currentIndex = Math.min(Math.floor(cursor), maxCursor);
   const currentStop = stops[currentIndex] ?? null;
-  const progress = maxCursor > 0 ? cursor / maxCursor : 0;
+  const progress = maxCursor > 0 ? currentIndex / maxCursor : 0;
 
   const getPosition = useCallback(
     (c: number): [number, number] | null => {
@@ -34,13 +38,13 @@ export function useRoutePlayback(stops: RouteStop[]) {
     [stops]
   );
 
-  const position = getPosition(cursor);
+  const position = getPosition(currentIndex);
 
   useEffect(() => {
     if (!isPlaying || stops.length === 0) return;
 
     lastTimeRef.current = performance.now();
-    cursorRef.current = cursor;
+    lastUIUpdateRef.current = 0;
 
     const tick = (now: number) => {
       const delta = now - lastTimeRef.current;
@@ -50,12 +54,26 @@ export function useRoutePlayback(stops: RouteStop[]) {
 
       if (cursorRef.current >= stops.length - 1) {
         cursorRef.current = stops.length - 1;
-        setCursor(cursorRef.current);
+        // Update marker directly
+        const pos = getPosition(cursorRef.current);
+        if (pos && markerRef.current) markerRef.current.setLngLat(pos);
+        setCurrentIndex(stops.length - 1);
         setIsPlaying(false);
         return;
       }
 
-      setCursor(cursorRef.current);
+      // Update marker position directly every frame (no React overhead)
+      const pos = getPosition(cursorRef.current);
+      if (pos && markerRef.current) {
+        markerRef.current.setLngLat(pos);
+      }
+
+      // Throttle React state updates for UI (stop name, progress bar)
+      if (now - lastUIUpdateRef.current > UI_UPDATE_INTERVAL) {
+        lastUIUpdateRef.current = now;
+        setCurrentIndex(Math.floor(cursorRef.current));
+      }
+
       animFrameRef.current = requestAnimationFrame(tick);
     };
 
@@ -64,19 +82,19 @@ export function useRoutePlayback(stops: RouteStop[]) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isPlaying, stops, speed]);
+  }, [isPlaying, stops, speed, getPosition, markerRef]);
 
   // Reset on route change
   useEffect(() => {
     setIsPlaying(false);
-    setCursor(0);
+    setCurrentIndex(0);
     cursorRef.current = 0;
     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
   }, [stops]);
 
   const play = useCallback(() => {
     if (cursorRef.current >= stops.length - 1) {
-      setCursor(0);
+      setCurrentIndex(0);
       cursorRef.current = 0;
     }
     setIsPlaying(true);
@@ -86,17 +104,21 @@ export function useRoutePlayback(stops: RouteStop[]) {
 
   const reset = useCallback(() => {
     setIsPlaying(false);
-    setCursor(0);
+    setCurrentIndex(0);
     cursorRef.current = 0;
-  }, []);
+    const pos = getPosition(0);
+    if (pos && markerRef.current) markerRef.current.setLngLat(pos);
+  }, [getPosition, markerRef]);
 
   const seek = useCallback(
     (index: number) => {
       const clamped = Math.max(0, Math.min(index, stops.length - 1));
-      setCursor(clamped);
+      setCurrentIndex(clamped);
       cursorRef.current = clamped;
+      const pos = getPosition(clamped);
+      if (pos && markerRef.current) markerRef.current.setLngLat(pos);
     },
-    [stops]
+    [stops, getPosition, markerRef]
   );
 
   const cycleSpeed = useCallback(() => {
