@@ -61,7 +61,7 @@ export function PlayerControls({
         </div>
 
         <span className="player-stop-count">
-          {currentIndex + 1} / {totalStops}
+          {totalStops > 0 ? `${Math.min(currentIndex + 1, totalStops)} / ${totalStops}` : "—"}
         </span>
       </div>
     </div>

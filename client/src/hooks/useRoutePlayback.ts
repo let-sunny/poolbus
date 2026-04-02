@@ -1,12 +1,20 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import type { Marker } from "mapbox-gl";
 import type { RouteStop } from "../types";
 
 const BASE_SPEED = 0.3; // stops per second at 1x
 const UI_UPDATE_INTERVAL = 100; // ms between React state updates
 
+function cancelAnim(ref: React.MutableRefObject<number | null>) {
+  if (ref.current) {
+    cancelAnimationFrame(ref.current);
+    ref.current = null;
+  }
+}
+
 export function useRoutePlayback(
   stops: RouteStop[],
-  markerRef: React.RefObject<mapboxgl.Marker | null>
+  markerRef: React.RefObject<Marker | null>
 ) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,7 +28,7 @@ export function useRoutePlayback(
   const totalStops = stops.length;
   const maxCursor = Math.max(totalStops - 1, 0);
   const currentStop = stops[currentIndex] ?? null;
-  const progress = maxCursor > 0 ? currentIndex / maxCursor : 0;
+  const progress = totalStops > 1 ? currentIndex / (totalStops - 1) : 0;
 
   const getPosition = useCallback(
     (c: number): [number, number] | null => {
@@ -42,7 +50,7 @@ export function useRoutePlayback(
   const position = getPosition(currentIndex);
 
   useEffect(() => {
-    if (!isPlaying || stops.length === 0) return;
+    if (!isPlaying || stops.length <= 1) return;
 
     lastTimeRef.current = performance.now();
     lastUIUpdateRef.current = 0;
@@ -55,7 +63,6 @@ export function useRoutePlayback(
 
       if (cursorRef.current >= stops.length - 1) {
         cursorRef.current = stops.length - 1;
-        // Update marker directly
         const pos = getPosition(cursorRef.current);
         if (pos && markerRef.current) markerRef.current.setLngLat(pos);
         setCurrentIndex(stops.length - 1);
@@ -63,13 +70,11 @@ export function useRoutePlayback(
         return;
       }
 
-      // Update marker position directly every frame (no React overhead)
       const pos = getPosition(cursorRef.current);
       if (pos && markerRef.current) {
         markerRef.current.setLngLat(pos);
       }
 
-      // Throttle React state updates for UI (stop name, progress bar)
       if (now - lastUIUpdateRef.current > UI_UPDATE_INTERVAL) {
         lastUIUpdateRef.current = now;
         setCurrentIndex(Math.floor(cursorRef.current));
@@ -80,9 +85,7 @@ export function useRoutePlayback(
 
     animFrameRef.current = requestAnimationFrame(tick);
 
-    return () => {
-      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    };
+    return () => cancelAnim(animFrameRef);
   }, [isPlaying, stops, getPosition, markerRef]);
 
   // Reset on route change
@@ -90,10 +93,11 @@ export function useRoutePlayback(
     setIsPlaying(false);
     setCurrentIndex(0);
     cursorRef.current = 0;
-    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    cancelAnim(animFrameRef);
   }, [stops]);
 
   const play = useCallback(() => {
+    if (stops.length <= 1) return;
     if (cursorRef.current >= stops.length - 1) {
       setCurrentIndex(0);
       cursorRef.current = 0;
@@ -101,10 +105,14 @@ export function useRoutePlayback(
     setIsPlaying(true);
   }, [stops]);
 
-  const pause = useCallback(() => setIsPlaying(false), []);
+  const pause = useCallback(() => {
+    setIsPlaying(false);
+    cancelAnim(animFrameRef);
+  }, []);
 
   const reset = useCallback(() => {
     setIsPlaying(false);
+    cancelAnim(animFrameRef);
     setCurrentIndex(0);
     cursorRef.current = 0;
     const pos = getPosition(0);

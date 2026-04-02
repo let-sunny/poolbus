@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import mapboxgl from "mapbox-gl";
+import type { Marker } from "mapbox-gl";
 import { BusMap } from "./components/BusMap";
 import { RouteSearchPanel } from "./components/RouteSearchPanel";
 import { RoutePath } from "./components/RoutePath";
@@ -12,7 +12,7 @@ import type { BusRoute } from "./types";
 
 export function App() {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
-  const markerRef = useRef<mapboxgl.Marker | null>(null);
+  const markerRef = useRef<Marker | null>(null);
   const [selectedRoute, setSelectedRoute] = useState<BusRoute | null>({
     routeid: "GGB204000079",
     routeno: "380",
