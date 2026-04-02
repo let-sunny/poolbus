@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Search Panel */
+.search-panel {
+  width: 320px;
+  min-width: 320px;
+  background: #16213e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  border-right: 1px solid #0f3460;
+}
+
+.panel-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #e94560;
+  letter-spacing: 1px;
+}
+
+.search-form {
+  display: flex;
+  gap: 8px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #0f3460;
+  border-radius: 6px;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #e94560;
+}
+
+.search-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #e94560;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background: #c73e54;
+}
+
+.search-btn:disabled {
+  background: #533a42;
+  cursor: not-allowed;
+}
+
+.search-error {
+  color: #e94560;
+  font-size: 13px;
+}
+
+/* Route List */
+.route-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.route-item {
+  padding: 12px;
+  border-radius: 8px;
+  background: #1a1a2e;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  border: 1px solid transparent;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.route-item:hover {
+  background: #0f3460;
+}
+
+.route-item.selected {
+  border-color: #e94560;
+  background: #0f3460;
+}
+
+.route-no {
+  font-size: 18px;
+  font-weight: 700;
+  color: #53d8fb;
+}
+
+.route-type {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #0f3460;
+  color: #a0a0b0;
+}
+
+.route-terminals {
+  width: 100%;
+  font-size: 13px;
+  color: #808090;
+}
+
+/* Map */
+.map-container {
+  flex: 1;
+  position: relative;
+}
+
+/* Bus Marker */
+.bus-marker {
+  width: 16px;
+  height: 16px;
+  background: #e94560;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(233, 69, 96, 0.6);
+  transition: transform 0.15s;
+}
+
+.bus-marker:hover {
+  transform: scale(1.4);
+}
+
+/* Bus Popup */
+.bus-popup {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.bus-popup strong {
+  font-size: 15px;
+  color: #e94560;
+}
+
+.bus-popup p {
+  margin: 4px 0 0;
+}
