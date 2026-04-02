@@ -249,6 +249,15 @@ body {
   z-index: 2;
 }
 
+.player-progress::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e94560;
+  border: none;
+  cursor: pointer;
+}
+
 .player-progress-fill {
   position: absolute;
   top: 50%;

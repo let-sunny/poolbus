@@ -21,14 +21,12 @@ export function PlaybackMarker({ map, markerRef, initialPosition }: PlaybackMark
 
       (markerRef as React.MutableRefObject<mapboxgl.Marker | null>).current = marker;
     }
-  }, [map, initialPosition, markerRef]);
 
-  useEffect(() => {
     return () => {
       markerRef.current?.remove();
       (markerRef as React.MutableRefObject<mapboxgl.Marker | null>).current = null;
     };
-  }, [markerRef]);
+  }, [map, initialPosition, markerRef]);
 
   return null;
 }

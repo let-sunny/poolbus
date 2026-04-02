@@ -64,10 +64,11 @@ export function RoutePath({ map, stops }: RoutePathProps) {
       });
     }
 
+    const currentMap = map;
     return () => {
-      if (map.getLayer(LINE_LAYER_ID)) map.removeLayer(LINE_LAYER_ID);
-      if (map.getLayer(STOPS_LAYER_ID)) map.removeLayer(STOPS_LAYER_ID);
-      if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID);
+      if (currentMap.getLayer(LINE_LAYER_ID)) currentMap.removeLayer(LINE_LAYER_ID);
+      if (currentMap.getLayer(STOPS_LAYER_ID)) currentMap.removeLayer(STOPS_LAYER_ID);
+      if (currentMap.getSource(SOURCE_ID)) currentMap.removeSource(SOURCE_ID);
     };
   }, [map, stops]);
 

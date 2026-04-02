@@ -51,10 +51,11 @@ export function PlaybackTrail({ map, stops, currentIndex }: PlaybackTrailProps) 
   }, [map, stops, currentIndex]);
 
   useEffect(() => {
+    const currentMap = map;
     return () => {
-      if (!map) return;
-      if (map.getLayer(LAYER_ID)) map.removeLayer(LAYER_ID);
-      if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID);
+      if (!currentMap) return;
+      if (currentMap.getLayer(LAYER_ID)) currentMap.removeLayer(LAYER_ID);
+      if (currentMap.getSource(SOURCE_ID)) currentMap.removeSource(SOURCE_ID);
     };
   }, [map]);
 

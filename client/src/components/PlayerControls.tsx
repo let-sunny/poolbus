@@ -52,8 +52,9 @@ export function PlayerControls({
             type="range"
             className="player-progress"
             min={0}
-            max={totalStops - 1}
-            value={currentIndex}
+            max={Math.max(0, totalStops - 1)}
+            value={Math.min(currentIndex, Math.max(0, totalStops - 1))}
+            disabled={totalStops === 0}
             onChange={(e) => onSeek(Number(e.target.value))}
           />
           <div className="player-progress-fill" style={{ width: `${progress * 100}%` }} />
