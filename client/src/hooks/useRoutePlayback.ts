@@ -5,10 +5,10 @@ import type { RouteStop } from "../types";
 const BASE_SPEED = 0.3; // stops per second at 1x
 const UI_UPDATE_INTERVAL = 100; // ms between React state updates
 
-function cancelAnim(ref: React.MutableRefObject<number | null>) {
-  if (ref.current) {
+function cancelAnim(ref: React.RefObject<number | null>) {
+  if (ref.current != null) {
     cancelAnimationFrame(ref.current);
-    ref.current = null;
+    (ref as { current: number | null }).current = null;
   }
 }
 
@@ -88,13 +88,16 @@ export function useRoutePlayback(
     return () => cancelAnim(animFrameRef);
   }, [isPlaying, stops, getPosition, markerRef]);
 
-  // Reset on route change
+  // Reset on route change — also move marker to new start
   useEffect(() => {
     setIsPlaying(false);
     setCurrentIndex(0);
     cursorRef.current = 0;
     cancelAnim(animFrameRef);
-  }, [stops]);
+    if (stops.length > 0 && markerRef.current) {
+      markerRef.current.setLngLat([stops[0].gpslong, stops[0].gpslati]);
+    }
+  }, [stops, markerRef]);
 
   const play = useCallback(() => {
     if (stops.length <= 1) return;
@@ -106,8 +109,9 @@ export function useRoutePlayback(
   }, [stops]);
 
   const pause = useCallback(() => {
-    setIsPlaying(false);
     cancelAnim(animFrameRef);
+    setCurrentIndex(Math.floor(cursorRef.current));
+    setIsPlaying(false);
   }, []);
 
   const reset = useCallback(() => {
