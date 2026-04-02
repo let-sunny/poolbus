@@ -1,15 +1,10 @@
+import homepage from "../../client/index.html";
 import { searchRoutes, getBusPositions, getRouteStops } from "./lib/tago";
-
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-};
 
 function json(data: unknown, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { "Content-Type": "application/json", ...CORS_HEADERS },
+    headers: { "Content-Type": "application/json" },
   });
 }
 
@@ -19,12 +14,11 @@ function error(message: string, status = 400) {
 
 const server = Bun.serve({
   port: 3000,
+  routes: {
+    "/": homepage,
+  },
   async fetch(req) {
     const url = new URL(req.url);
-
-    if (req.method === "OPTIONS") {
-      return new Response(null, { headers: CORS_HEADERS });
-    }
 
     // GET /api/routes?routeNo=360
     if (url.pathname === "/api/routes" && req.method === "GET") {
