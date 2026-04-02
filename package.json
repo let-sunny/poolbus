@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "bun run --cwd client dev",
     "build": "bun run --cwd client build",
+    "preview": "bun run --cwd client preview",
     "deploy": "bun run build && cd client/dist && git init && git add -A && git commit -m 'deploy' && git push -f git@github.com:let-sunny/poolbus.git main:gh-pages"
   },
   "devDependencies": {
