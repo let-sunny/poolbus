@@ -75,12 +75,20 @@ export function BusMarkers({ map, current, previous }: BusMarkersProps) {
   return null;
 }
 
+function escapeHTML(str: string): string {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 function popupHTML(bus: BusPosition): string {
+  const vehicleno = escapeHTML(String(bus.vehicleno || ""));
+  const routenm = escapeHTML(String(bus.routenm || ""));
+  const routetp = escapeHTML(String(bus.routetp || ""));
+  const nodenm = escapeHTML(String(bus.nodenm || "정보 없음"));
   return `
     <div class="bus-popup">
-      <strong>${bus.vehicleno}</strong>
-      <p>${bus.routenm || ""} · ${bus.routetp || ""}</p>
-      <p>현재 정류소: ${bus.nodenm || "정보 없음"}</p>
+      <strong>${vehicleno}</strong>
+      <p>${routenm} · ${routetp}</p>
+      <p>현재 정류소: ${nodenm}</p>
     </div>
   `;
 }

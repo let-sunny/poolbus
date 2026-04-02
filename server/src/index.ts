@@ -20,29 +20,35 @@ const server = Bun.serve({
   async fetch(req) {
     const url = new URL(req.url);
 
-    // GET /api/routes?routeNo=360
-    if (url.pathname === "/api/routes" && req.method === "GET") {
-      const routeNo = url.searchParams.get("routeNo");
-      if (!routeNo) return error("routeNo parameter is required");
-      const data = await searchRoutes(routeNo);
-      return json(data);
-    }
+    try {
+      // GET /api/routes?routeNo=360
+      if (url.pathname === "/api/routes" && req.method === "GET") {
+        const routeNo = url.searchParams.get("routeNo");
+        if (!routeNo) return error("routeNo parameter is required");
+        const data = await searchRoutes(routeNo);
+        return json(data);
+      }
 
-    // GET /api/routes/:routeId/buses
-    const busMatch = url.pathname.match(/^\/api\/routes\/([^/]+)\/buses$/);
-    if (busMatch && req.method === "GET") {
-      const data = await getBusPositions(busMatch[1]);
-      return json(data);
-    }
+      // GET /api/routes/:routeId/buses
+      const busMatch = url.pathname.match(/^\/api\/routes\/([^/]+)\/buses$/);
+      if (busMatch && req.method === "GET") {
+        const data = await getBusPositions(busMatch[1]);
+        return json(data);
+      }
 
-    // GET /api/routes/:routeId/stops
-    const stopMatch = url.pathname.match(/^\/api\/routes\/([^/]+)\/stops$/);
-    if (stopMatch && req.method === "GET") {
-      const data = await getRouteStops(stopMatch[1]);
-      return json(data);
-    }
+      // GET /api/routes/:routeId/stops
+      const stopMatch = url.pathname.match(/^\/api\/routes\/([^/]+)\/stops$/);
+      if (stopMatch && req.method === "GET") {
+        const data = await getRouteStops(stopMatch[1]);
+        return json(data);
+      }
 
-    return error("Not found", 404);
+      return error("Not found", 404);
+    } catch (e) {
+      console.error("API error:", e);
+      const message = e instanceof Error ? e.message : "Internal server error";
+      return error(message, 500);
+    }
   },
 });
 
