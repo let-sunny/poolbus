@@ -1,0 +1,7 @@
+{
+  "name": "poolbus-server",
+  "private": true,
+  "dependencies": {
+    "poolbus-client": "workspace:*"
+  }
+}
