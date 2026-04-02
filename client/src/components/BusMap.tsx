@@ -12,9 +12,9 @@ export function BusMap({ onMapReady }: BusMapProps) {
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
-    const token = process.env.PUBLIC_MAPBOX_TOKEN;
+    const token = import.meta.env.VITE_MAPBOX_TOKEN;
     if (!token) {
-      console.error("PUBLIC_MAPBOX_TOKEN is not set");
+      console.error("VITE_MAPBOX_TOKEN is not set");
       return;
     }
     mapboxgl.accessToken = token;

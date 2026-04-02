@@ -1,0 +1,744 @@
+[
+  {
+    "nodeid": "GGB205000258",
+    "nodenm": "동분당더퍼스트정문",
+    "gpslati": 37.4171333,
+    "gpslong": 127.1564167,
+    "nodeord": 1
+  },
+  {
+    "nodeid": "GGB205000219",
+    "nodenm": "동분당더퍼스트.도촌종합사회복지관",
+    "gpslati": 37.4155333,
+    "gpslong": 127.1589667,
+    "nodeord": 2
+  },
+  {
+    "nodeid": "GGB205000227",
+    "nodenm": "도촌동9단지앞",
+    "gpslati": 37.4118167,
+    "gpslong": 127.1627833,
+    "nodeord": 3
+  },
+  {
+    "nodeid": "GGB205000220",
+    "nodenm": "도촌7단지.8단지",
+    "gpslati": 37.4120167,
+    "gpslong": 127.1616,
+    "nodeord": 4
+  },
+  {
+    "nodeid": "GGB205000221",
+    "nodenm": "도촌초등학교.도촌종합사회복지관",
+    "gpslati": 37.4139333,
+    "gpslong": 127.1575667,
+    "nodeord": 5
+  },
+  {
+    "nodeid": "GGB205000352",
+    "nodenm": "도촌4단지",
+    "gpslati": 37.4144833,
+    "gpslong": 127.1556167,
+    "nodeord": 6
+  },
+  {
+    "nodeid": "GGB205000222",
+    "nodenm": "동분당포레스트.스위첸파티오1단지",
+    "gpslati": 37.4146,
+    "gpslong": 127.1530667,
+    "nodeord": 7
+  },
+  {
+    "nodeid": "GGB205000231",
+    "nodenm": "동강프라자앞",
+    "gpslati": 37.41435,
+    "gpslong": 127.1506833,
+    "nodeord": 8
+  },
+  {
+    "nodeid": "GGB205000217",
+    "nodenm": "도촌1.2단지",
+    "gpslati": 37.4146333,
+    "gpslong": 127.1487833,
+    "nodeord": 9
+  },
+  {
+    "nodeid": "GGB205000098",
+    "nodenm": "분재단지.도촌동1단지",
+    "gpslati": 37.4145833,
+    "gpslong": 127.1449833,
+    "nodeord": 10
+  },
+  {
+    "nodeid": "GGB205000175",
+    "nodenm": "매화마을주공3단지",
+    "gpslati": 37.4145,
+    "gpslong": 127.14155,
+    "nodeord": 11
+  },
+  {
+    "nodeid": "GGB205000210",
+    "nodenm": "매화마을3단지",
+    "gpslati": 37.4150667,
+    "gpslong": 127.1384167,
+    "nodeord": 12
+  },
+  {
+    "nodeid": "GGB206000726",
+    "nodenm": "야탑119안전센터",
+    "gpslati": 37.4163,
+    "gpslong": 127.1362,
+    "nodeord": 13
+  },
+  {
+    "nodeid": "GGB206000117",
+    "nodenm": "장미마을8단지.현대아파트",
+    "gpslati": 37.4161667,
+    "gpslong": 127.1337167,
+    "nodeord": 14
+  },
+  {
+    "nodeid": "GGB206000116",
+    "nodenm": "매화마을사거리.장미마을8단지",
+    "gpslati": 37.41395,
+    "gpslong": 127.13375,
+    "nodeord": 15
+  },
+  {
+    "nodeid": "GGB206000142",
+    "nodenm": "장미마을.현대아파트",
+    "gpslati": 37.4137167,
+    "gpslong": 127.1323667,
+    "nodeord": 16
+  },
+  {
+    "nodeid": "GGB206000141",
+    "nodenm": "장미마을",
+    "gpslati": 37.41395,
+    "gpslong": 127.1305333,
+    "nodeord": 17
+  },
+  {
+    "nodeid": "GGB206000157",
+    "nodenm": "야탑역.종합버스터미널(전면)",
+    "gpslati": 37.4114167,
+    "gpslong": 127.1285,
+    "nodeord": 18
+  },
+  {
+    "nodeid": "GGB206000392",
+    "nodenm": "쌍용아파트",
+    "gpslati": 37.4068667,
+    "gpslong": 127.1284333,
+    "nodeord": 19
+  },
+  {
+    "nodeid": "GGB206000298",
+    "nodenm": "삼환진덕아파트",
+    "gpslati": 37.4055333,
+    "gpslong": 127.12735,
+    "nodeord": 20
+  },
+  {
+    "nodeid": "GGB206000310",
+    "nodenm": "탑마을대우아파트",
+    "gpslati": 37.4055833,
+    "gpslong": 127.1223667,
+    "nodeord": 21
+  },
+  {
+    "nodeid": "GGB204000203",
+    "nodenm": "송현초등학교.판교이지더원2단지",
+    "gpslati": 37.4051833,
+    "gpslong": 127.1177833,
+    "nodeord": 22
+  },
+  {
+    "nodeid": "GGB204000205",
+    "nodenm": "판교신미주아파트.봇들3단지",
+    "gpslati": 37.4041333,
+    "gpslong": 127.1154833,
+    "nodeord": 23
+  },
+  {
+    "nodeid": "GGB206000562",
+    "nodenm": "차그룹컨소시엄",
+    "gpslati": 37.40335,
+    "gpslong": 127.11095,
+    "nodeord": 24
+  },
+  {
+    "nodeid": "GGB206000564",
+    "nodenm": "봇들육교",
+    "gpslati": 37.4033667,
+    "gpslong": 127.1076667,
+    "nodeord": 25
+  },
+  {
+    "nodeid": "GGB206000566",
+    "nodenm": "이노밸리.포스코DX",
+    "gpslati": 37.4033667,
+    "gpslong": 127.1030667,
+    "nodeord": 26
+  },
+  {
+    "nodeid": "GGB206000744",
+    "nodenm": "이노밸리A동.오콘",
+    "gpslati": 37.40295,
+    "gpslong": 127.1005167,
+    "nodeord": 27
+  },
+  {
+    "nodeid": "GGB206000801",
+    "nodenm": "판교세븐벤처밸리",
+    "gpslati": 37.4014333,
+    "gpslong": 127.1002667,
+    "nodeord": 28
+  },
+  {
+    "nodeid": "GGB206000127",
+    "nodenm": "판교환경생태학습원",
+    "gpslati": 37.39975,
+    "gpslong": 127.1040833,
+    "nodeord": 29
+  },
+  {
+    "nodeid": "GGB206000583",
+    "nodenm": "NC소프트",
+    "gpslati": 37.3997333,
+    "gpslong": 127.1086167,
+    "nodeord": 30
+  },
+  {
+    "nodeid": "GGB206000731",
+    "nodenm": "엔씨소프트.안랩",
+    "gpslati": 37.3994667,
+    "gpslong": 127.1094667,
+    "nodeord": 31
+  },
+  {
+    "nodeid": "GGB206000679",
+    "nodenm": "판교역북편",
+    "gpslati": 37.3961167,
+    "gpslong": 127.1113833,
+    "nodeord": 32
+  },
+  {
+    "nodeid": "GGB206000637",
+    "nodenm": "판교역동편",
+    "gpslati": 37.3953833,
+    "gpslong": 127.1127,
+    "nodeord": 33
+  },
+  {
+    "nodeid": "GGB206000536",
+    "nodenm": "백현마을4단지",
+    "gpslati": 37.3916667,
+    "gpslong": 127.1156833,
+    "nodeord": 34
+  },
+  {
+    "nodeid": "GGB206000537",
+    "nodenm": "성남역.백현마을3단지",
+    "gpslati": 37.3917833,
+    "gpslong": 127.11815,
+    "nodeord": 35
+  },
+  {
+    "nodeid": "GGB206000239",
+    "nodenm": "이매촌한신.서현역.AK프라자",
+    "gpslati": 37.3883167,
+    "gpslong": 127.1242333,
+    "nodeord": 36
+  },
+  {
+    "nodeid": "GGB206000026",
+    "nodenm": "서현역.AK플라자",
+    "gpslati": 37.3842667,
+    "gpslong": 127.1242333,
+    "nodeord": 37
+  },
+  {
+    "nodeid": "GGB206000297",
+    "nodenm": "분당구청.중앙공원후문",
+    "gpslati": 37.3816833,
+    "gpslong": 127.1206167,
+    "nodeord": 38
+  },
+  {
+    "nodeid": "GGB206000296",
+    "nodenm": "수내역.롯데백화점",
+    "gpslati": 37.3777667,
+    "gpslong": 127.11515,
+    "nodeord": 39
+  },
+  {
+    "nodeid": "GGB206000257",
+    "nodenm": "로얄팰리스아파트",
+    "gpslati": 37.37455,
+    "gpslong": 127.11065,
+    "nodeord": 40
+  },
+  {
+    "nodeid": "GGB206000256",
+    "nodenm": "정자유스센터.분당클리닉",
+    "gpslati": 37.3706667,
+    "gpslong": 127.1078333,
+    "nodeord": 41
+  },
+  {
+    "nodeid": "GGB206000189",
+    "nodenm": "정자역",
+    "gpslati": 37.36585,
+    "gpslong": 127.1078833,
+    "nodeord": 42
+  },
+  {
+    "nodeid": "GGB206000140",
+    "nodenm": "아데나펠리스",
+    "gpslati": 37.3622,
+    "gpslong": 127.1078667,
+    "nodeord": 43
+  },
+  {
+    "nodeid": "GGB206000097",
+    "nodenm": "상록마을(임광.보성).미켈란쉐르빌",
+    "gpslati": 37.3589167,
+    "gpslong": 127.1079333,
+    "nodeord": 44
+  },
+  {
+    "nodeid": "GGB206000096",
+    "nodenm": "분당경영고.한라아파트",
+    "gpslati": 37.35575,
+    "gpslong": 127.1084167,
+    "nodeord": 45
+  },
+  {
+    "nodeid": "GGB206000095",
+    "nodenm": "미금역.청솔마을.2001아울렛",
+    "gpslati": 37.3507167,
+    "gpslong": 127.1086,
+    "nodeord": 46
+  },
+  {
+    "nodeid": "GGB206000222",
+    "nodenm": "미금역.2001아울렛",
+    "gpslati": 37.3501833,
+    "gpslong": 127.1068167,
+    "nodeord": 47
+  },
+  {
+    "nodeid": "GGB206000779",
+    "nodenm": "이우중고",
+    "gpslati": 37.3519167,
+    "gpslong": 127.0864667,
+    "nodeord": 48
+  },
+  {
+    "nodeid": "GGB206000853",
+    "nodenm": "판교대장로동측",
+    "gpslati": 37.3633167,
+    "gpslong": 127.0678,
+    "nodeord": 49
+  },
+  {
+    "nodeid": "GGB206000471",
+    "nodenm": "판교풍경채5단지",
+    "gpslati": 37.365,
+    "gpslong": 127.0691,
+    "nodeord": 50
+  },
+  {
+    "nodeid": "GGB206000465",
+    "nodenm": "더샵판교포레스트11단지.판교해링턴플레이스",
+    "gpslati": 37.36735,
+    "gpslong": 127.0711167,
+    "nodeord": 51
+  },
+  {
+    "nodeid": "GGB206000656",
+    "nodenm": "판교대장초·중학교",
+    "gpslati": 37.3704167,
+    "gpslong": 127.06995,
+    "nodeord": 52
+  },
+  {
+    "nodeid": "GGB206000856",
+    "nodenm": "판교퍼스트힐푸르지오1단지",
+    "gpslati": 37.37265,
+    "gpslong": 127.0711833,
+    "nodeord": 53
+  },
+  {
+    "nodeid": "GGB206000619",
+    "nodenm": "판교퍼스트힐푸르지오2단지.판교SK뷰테라스",
+    "gpslati": 37.3740667,
+    "gpslong": 127.0685833,
+    "nodeord": 54
+  },
+  {
+    "nodeid": "GGB206000855",
+    "nodenm": "판교TH212",
+    "gpslati": 37.3717,
+    "gpslong": 127.0678167,
+    "nodeord": 55
+  },
+  {
+    "nodeid": "GGB206000794",
+    "nodenm": "판교반디유치원.복합문화단지",
+    "gpslati": 37.3668667,
+    "gpslong": 127.0708833,
+    "nodeord": 56
+  },
+  {
+    "nodeid": "GGB206000854",
+    "nodenm": "힐스테이트판교엘포레4단지",
+    "gpslati": 37.3652333,
+    "gpslong": 127.0688833,
+    "nodeord": 57
+  },
+  {
+    "nodeid": "GGB206000659",
+    "nodenm": "판교대장로서측",
+    "gpslati": 37.3633,
+    "gpslong": 127.0674833,
+    "nodeord": 58
+  },
+  {
+    "nodeid": "GGB206000780",
+    "nodenm": "이우중고",
+    "gpslati": 37.35175,
+    "gpslong": 127.0862167,
+    "nodeord": 59
+  },
+  {
+    "nodeid": "GGB206000228",
+    "nodenm": "미금역.2001아울렛",
+    "gpslati": 37.3499333,
+    "gpslong": 127.1068333,
+    "nodeord": 60
+  },
+  {
+    "nodeid": "GGB206000087",
+    "nodenm": "미금역.청솔마을.2001아울렛",
+    "gpslati": 37.3510667,
+    "gpslong": 127.1091833,
+    "nodeord": 61
+  },
+  {
+    "nodeid": "GGB206000086",
+    "nodenm": "청솔주공6단지",
+    "gpslati": 37.3543,
+    "gpslong": 127.1091,
+    "nodeord": 62
+  },
+  {
+    "nodeid": "GGB206000085",
+    "nodenm": "상록마을",
+    "gpslati": 37.3578667,
+    "gpslong": 127.10855,
+    "nodeord": 63
+  },
+  {
+    "nodeid": "GGB206000199",
+    "nodenm": "아데나펠리스",
+    "gpslati": 37.3611167,
+    "gpslong": 127.10835,
+    "nodeord": 64
+  },
+  {
+    "nodeid": "GGB206000198",
+    "nodenm": "정자역",
+    "gpslati": 37.3659667,
+    "gpslong": 127.1083333,
+    "nodeord": 65
+  },
+  {
+    "nodeid": "GGB206000197",
+    "nodenm": "두산위브제니스",
+    "gpslati": 37.3695333,
+    "gpslong": 127.1083167,
+    "nodeord": 66
+  },
+  {
+    "nodeid": "GGB206000253",
+    "nodenm": "느티마을.경남빌라",
+    "gpslati": 37.3746667,
+    "gpslong": 127.1116,
+    "nodeord": 67
+  },
+  {
+    "nodeid": "GGB206000278",
+    "nodenm": "롯데백화점.수내역",
+    "gpslati": 37.3774667,
+    "gpslong": 127.1154833,
+    "nodeord": 68
+  },
+  {
+    "nodeid": "GGB206000300",
+    "nodenm": "분당구청.중앙공원후문",
+    "gpslati": 37.3813167,
+    "gpslong": 127.1207667,
+    "nodeord": 69
+  },
+  {
+    "nodeid": "GGB206000299",
+    "nodenm": "서현역.AK플라자",
+    "gpslati": 37.3839833,
+    "gpslong": 127.1245333,
+    "nodeord": 70
+  },
+  {
+    "nodeid": "GGB206000316",
+    "nodenm": "이매촌한신.서현역.AK프라자",
+    "gpslati": 37.3884833,
+    "gpslong": 127.1246333,
+    "nodeord": 71
+  },
+  {
+    "nodeid": "GGB206000530",
+    "nodenm": "성남역.백현마을2단지",
+    "gpslati": 37.3921167,
+    "gpslong": 127.1182333,
+    "nodeord": 72
+  },
+  {
+    "nodeid": "GGB206000531",
+    "nodenm": "백현마을1단지",
+    "gpslati": 37.3919667,
+    "gpslong": 127.1145,
+    "nodeord": 73
+  },
+  {
+    "nodeid": "GGB206000683",
+    "nodenm": "판교역남편",
+    "gpslati": 37.39385,
+    "gpslong": 127.1115,
+    "nodeord": 74
+  },
+  {
+    "nodeid": "GGB206000681",
+    "nodenm": "판교역서편",
+    "gpslati": 37.3948167,
+    "gpslong": 127.1098333,
+    "nodeord": 75
+  },
+  {
+    "nodeid": "GGB206000640",
+    "nodenm": "동안교",
+    "gpslati": 37.39725,
+    "gpslong": 127.1098667,
+    "nodeord": 76
+  },
+  {
+    "nodeid": "GGB206000582",
+    "nodenm": "메디포스트",
+    "gpslati": 37.39995,
+    "gpslong": 127.1087167,
+    "nodeord": 77
+  },
+  {
+    "nodeid": "GGB206000720",
+    "nodenm": "네오위즈.NHN",
+    "gpslati": 37.39995,
+    "gpslong": 127.1042667,
+    "nodeord": 78
+  },
+  {
+    "nodeid": "GGB206000126",
+    "nodenm": "판교세븐벤처밸리",
+    "gpslati": 37.4015167,
+    "gpslong": 127.10045,
+    "nodeord": 79
+  },
+  {
+    "nodeid": "GGB206000745",
+    "nodenm": "판교PDCC.NS홈쇼핑",
+    "gpslati": 37.4025833,
+    "gpslong": 127.1007833,
+    "nodeord": 80
+  },
+  {
+    "nodeid": "GGB206000567",
+    "nodenm": "SK플래닛.판교디지털센터",
+    "gpslati": 37.4030167,
+    "gpslong": 127.10315,
+    "nodeord": 81
+  },
+  {
+    "nodeid": "GGB206000565",
+    "nodenm": "유라코퍼레이션.SK케미칼",
+    "gpslati": 37.4030667,
+    "gpslong": 127.1076833,
+    "nodeord": 82
+  },
+  {
+    "nodeid": "GGB206000563",
+    "nodenm": "한국무역정보통신",
+    "gpslati": 37.4030833,
+    "gpslong": 127.1109833,
+    "nodeord": 83
+  },
+  {
+    "nodeid": "GGB204000206",
+    "nodenm": "봇들3단지.판교신미주아파트",
+    "gpslati": 37.4038833,
+    "gpslong": 127.1156167,
+    "nodeord": 84
+  },
+  {
+    "nodeid": "GGB204000204",
+    "nodenm": "송현초등학교.판교봇들마을4단지",
+    "gpslati": 37.4048833,
+    "gpslong": 127.1177667,
+    "nodeord": 85
+  },
+  {
+    "nodeid": "GGB206000309",
+    "nodenm": "아름마을건영아파트",
+    "gpslati": 37.4053333,
+    "gpslong": 127.1212667,
+    "nodeord": 86
+  },
+  {
+    "nodeid": "GGB206000277",
+    "nodenm": "삼환아파트",
+    "gpslati": 37.4052833,
+    "gpslong": 127.1268167,
+    "nodeord": 87
+  },
+  {
+    "nodeid": "GGB206000441",
+    "nodenm": "경남아너스빌",
+    "gpslati": 37.4073333,
+    "gpslong": 127.12895,
+    "nodeord": 88
+  },
+  {
+    "nodeid": "GGB206000108",
+    "nodenm": "야탑역.종합버스터미널(전면)",
+    "gpslati": 37.4121,
+    "gpslong": 127.1289667,
+    "nodeord": 89
+  },
+  {
+    "nodeid": "GGB206000148",
+    "nodenm": "장미마을",
+    "gpslati": 37.4137,
+    "gpslong": 127.1300333,
+    "nodeord": 90
+  },
+  {
+    "nodeid": "GGB206000147",
+    "nodenm": "장미마을.현대아파트",
+    "gpslati": 37.4135167,
+    "gpslong": 127.1321333,
+    "nodeord": 91
+  },
+  {
+    "nodeid": "GGB206000113",
+    "nodenm": "매화마을사거리.매화마을2단지",
+    "gpslati": 37.4140167,
+    "gpslong": 127.1340333,
+    "nodeord": 92
+  },
+  {
+    "nodeid": "GGB206000112",
+    "nodenm": "장미마을8단지.매화마을주공1단지",
+    "gpslati": 37.4153667,
+    "gpslong": 127.1340333,
+    "nodeord": 93
+  },
+  {
+    "nodeid": "GGB206000728",
+    "nodenm": "매화마을1단지",
+    "gpslati": 37.4165,
+    "gpslong": 127.1348167,
+    "nodeord": 94
+  },
+  {
+    "nodeid": "GGB206000478",
+    "nodenm": "매화마을3단지",
+    "gpslati": 37.4150833,
+    "gpslong": 127.1378833,
+    "nodeord": 95
+  },
+  {
+    "nodeid": "GGB206000264",
+    "nodenm": "매화마을주공3단지",
+    "gpslati": 37.4144333,
+    "gpslong": 127.1408333,
+    "nodeord": 96
+  },
+  {
+    "nodeid": "GGB205000097",
+    "nodenm": "도촌동1단지앞",
+    "gpslati": 37.41425,
+    "gpslong": 127.1449333,
+    "nodeord": 97
+  },
+  {
+    "nodeid": "GGB205000211",
+    "nodenm": "도촌1.2단지",
+    "gpslati": 37.4145333,
+    "gpslong": 127.14865,
+    "nodeord": 98
+  },
+  {
+    "nodeid": "GGB205000230",
+    "nodenm": "도촌2단지.근로복지공단",
+    "gpslati": 37.4142,
+    "gpslong": 127.1507,
+    "nodeord": 99
+  },
+  {
+    "nodeid": "GGB205000212",
+    "nodenm": "동분당포레스트.스위첸파티오1단지",
+    "gpslati": 37.4144667,
+    "gpslong": 127.1534833,
+    "nodeord": 100
+  },
+  {
+    "nodeid": "GGB205000213",
+    "nodenm": "도촌초등학교.도촌종합사회복지관",
+    "gpslati": 37.4137667,
+    "gpslong": 127.1577667,
+    "nodeord": 101
+  },
+  {
+    "nodeid": "GGB205000214",
+    "nodenm": "도촌7단지.8단지",
+    "gpslati": 37.4117833,
+    "gpslong": 127.1618,
+    "nodeord": 102
+  },
+  {
+    "nodeid": "GGB205000226",
+    "nodenm": "도촌동9단지앞",
+    "gpslati": 37.41195,
+    "gpslong": 127.16305,
+    "nodeord": 103
+  },
+  {
+    "nodeid": "GGB205000215",
+    "nodenm": "동분당더퍼스트.도촌종합사회복지관",
+    "gpslati": 37.4158167,
+    "gpslong": 127.1587833,
+    "nodeord": 104
+  },
+  {
+    "nodeid": "GGB205000259",
+    "nodenm": "동분당더퍼스트정문",
+    "gpslati": 37.41705,
+    "gpslong": 127.1569667,
+    "nodeord": 105
+  },
+  {
+    "nodeid": "GGB205000216",
+    "nodenm": "도촌동행정복지센터",
+    "gpslati": 37.4172833,
+    "gpslong": 127.1533167,
+    "nodeord": 106
+  }
+]

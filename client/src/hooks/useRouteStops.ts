@@ -10,11 +10,10 @@ export function useRouteStops(routeId: string | null) {
       return;
     }
 
-    fetch(`/api/routes/${routeId}/stops`)
-      .then((res) => res.json())
-      .then((data: RouteStop[]) => {
-        const sorted = data.sort((a, b) => a.nodeord - b.nodeord);
-        setStops(sorted);
+    import(`../data/routes/${routeId}.json`)
+      .then((mod) => {
+        const data: RouteStop[] = mod.default;
+        setStops(data.sort((a, b) => a.nodeord - b.nodeord));
       })
       .catch(() => setStops([]));
   }, [routeId]);

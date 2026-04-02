@@ -1,28 +1,21 @@
-import { useState, useRef } from "react";
-import type { Marker } from "mapbox-gl";
+import { useRef } from "react";
+import { useState } from "react";
+import type { Marker, Map } from "mapbox-gl";
 import { BusMap } from "./components/BusMap";
-import { RouteSearchPanel } from "./components/RouteSearchPanel";
 import { RoutePath } from "./components/RoutePath";
 import { PlaybackMarker } from "./components/PlaybackMarker";
 import { PlaybackTrail } from "./components/PlaybackTrail";
 import { PlayerControls } from "./components/PlayerControls";
 import { useRouteStops } from "./hooks/useRouteStops";
 import { useRoutePlayback } from "./hooks/useRoutePlayback";
-import type { BusRoute } from "./types";
+
+const ROUTE_ID = "GGB204000079";
 
 export function App() {
-  const [map, setMap] = useState<mapboxgl.Map | null>(null);
+  const [map, setMap] = useState<Map | null>(null);
   const markerRef = useRef<Marker | null>(null);
-  const [selectedRoute, setSelectedRoute] = useState<BusRoute | null>({
-    routeid: "GGB204000079",
-    routeno: "380",
-    routetp: "일반버스",
-    startnodenm: "동분당더퍼스트정문",
-    endnodenm: "판교대장초·중학교",
-  });
 
-  const routeId = selectedRoute?.routeid ?? null;
-  const stops = useRouteStops(routeId);
+  const stops = useRouteStops(ROUTE_ID);
   const {
     currentIndex,
     isPlaying,
@@ -39,10 +32,6 @@ export function App() {
 
   return (
     <div className="app">
-      <RouteSearchPanel
-        onSelectRoute={setSelectedRoute}
-        selectedRouteId={routeId}
-      />
       <div className="map-container">
         <BusMap onMapReady={setMap} />
         <RoutePath map={map} stops={stops} />
