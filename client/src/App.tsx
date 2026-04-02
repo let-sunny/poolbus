@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import mapboxgl from "mapbox-gl";
 import { BusMap } from "./components/BusMap";
 import { RouteSearchPanel } from "./components/RouteSearchPanel";
@@ -7,7 +7,7 @@ import { useBusPositions } from "./hooks/useBusPositions";
 import type { BusRoute } from "./types";
 
 export function App() {
-  const mapRef = useRef<mapboxgl.Map | null>(null);
+  const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [selectedRoute, setSelectedRoute] = useState<BusRoute | null>({
     routeid: "GGB204000079",
     routeno: "380",
@@ -24,8 +24,8 @@ export function App() {
         selectedRouteId={selectedRoute?.routeid ?? null}
       />
       <div className="map-container">
-        <BusMap mapRef={mapRef} />
-        <BusMarkers map={mapRef.current} current={current} previous={previous} />
+        <BusMap onMapReady={setMap} />
+        <BusMarkers map={map} current={current} previous={previous} />
       </div>
     </div>
   );
