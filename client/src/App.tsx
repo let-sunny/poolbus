@@ -2,12 +2,12 @@ import { useState } from "react";
 import mapboxgl from "mapbox-gl";
 import { BusMap } from "./components/BusMap";
 import { RouteSearchPanel } from "./components/RouteSearchPanel";
-import { BusMarkers } from "./components/BusMarkers";
-import { BusTrails } from "./components/BusTrails";
 import { RoutePath } from "./components/RoutePath";
+import { PlaybackMarker } from "./components/PlaybackMarker";
+import { PlaybackTrail } from "./components/PlaybackTrail";
 import { PlayerControls } from "./components/PlayerControls";
-import { useBusPositions } from "./hooks/useBusPositions";
 import { useRouteStops } from "./hooks/useRouteStops";
+import { useRoutePlayback } from "./hooks/useRoutePlayback";
 import type { BusRoute } from "./types";
 
 export function App() {
@@ -21,16 +21,20 @@ export function App() {
   });
 
   const routeId = selectedRoute?.routeid ?? null;
-  const { current, previous, isPlaying, play, pause, reset } = useBusPositions(routeId);
   const stops = useRouteStops(routeId);
-
-  const handleReset = () => {
-    reset();
-    if (map) {
-      const source = map.getSource("bus-trails") as mapboxgl.GeoJSONSource | undefined;
-      if (source) source.setData({ type: "FeatureCollection", features: [] });
-    }
-  };
+  const {
+    currentIndex,
+    isPlaying,
+    speed,
+    currentStop,
+    position,
+    play,
+    pause,
+    reset,
+    seek,
+    cycleSpeed,
+    totalStops,
+  } = useRoutePlayback(stops);
 
   return (
     <div className="app">
@@ -41,14 +45,19 @@ export function App() {
       <div className="map-container">
         <BusMap onMapReady={setMap} />
         <RoutePath map={map} stops={stops} />
-        <BusTrails map={map} current={current} />
-        <BusMarkers map={map} current={current} previous={previous} />
+        <PlaybackTrail map={map} stops={stops} currentIndex={currentIndex} />
+        <PlaybackMarker map={map} position={position} currentStop={currentStop} />
         <PlayerControls
           isPlaying={isPlaying}
-          busCount={current.length}
+          speed={speed}
+          currentIndex={currentIndex}
+          totalStops={totalStops}
+          currentStop={currentStop}
           onPlay={play}
           onPause={pause}
-          onReset={handleReset}
+          onReset={reset}
+          onSeek={seek}
+          onCycleSpeed={cycleSpeed}
         />
       </div>
     </div>
