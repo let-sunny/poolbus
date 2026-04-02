@@ -77,11 +77,18 @@ export function useRoutePlayback(stops: RouteStop[]) {
     };
   }, [isPlaying, stops, speed, interpolatePosition]);
 
+  // Reset when stops change (route switch)
   useEffect(() => {
-    if (stops.length > 0 && !position) {
+    setIsPlaying(false);
+    setCurrentIndex(0);
+    progressRef.current = 0;
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    if (stops.length > 0) {
       setPosition([stops[0].gpslong, stops[0].gpslati]);
+    } else {
+      setPosition(null);
     }
-  }, [stops, position]);
+  }, [stops]);
 
   const play = useCallback(() => setIsPlaying(true), []);
   const pause = useCallback(() => setIsPlaying(false), []);
